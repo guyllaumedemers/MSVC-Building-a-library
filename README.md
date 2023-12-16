@@ -22,9 +22,9 @@ A library is called header-only if the full definitions of all macros, functions
 
 ##### Example
 Run using Terminal CLI and compile your executable with a Header-only library (*output : Main.obj, Main.exe*).
-</br></br>
-> cl Main.cc
-</br>
+```
+C:> cl Main.cpp		(Main.obj, Main.exe)
+```
 
 ```
 // header-only library
