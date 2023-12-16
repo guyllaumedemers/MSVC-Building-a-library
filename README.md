@@ -11,6 +11,51 @@ Example details are grouped into subject related points and showcase investigati
 Be aware that some of the tooling used in the making of this `Demo` project won't be covered here. External documentations will be provided for your own benefit, which in most case, are also where most of the information mentioned here will be coming from.
 
 ### What's a library
+
+**Wikipedia** : "A library is a collection of implementations of behavior, written in terms of a language, that has a well-defined interface by which the behavior is invoked. For instance, people who want to write a higher-level program can use a library to make system calls instead of implementing those system calls."
+</br>
+
+**Run using Terminal CLI** and compile your executable with a Header ONLY library.
+</br></br>
+> cl Main.cc (output : Main.obj, Main.exe)
+</br>
+
+```
+// header ONLY library
+
+#include <type_traits>
+
+class FMath {
+public:
+	template<typename T,
+		std::enable_if_t<std::is_arithmetic<T>::value, bool> = true>
+	inline static T Sum(const T& A, const T& B) {
+		return A + B;
+	}
+};
+
+// executable
+
+#include <stdio.h>
+#include "Math.hh"
+
+int main(int argc /*arg count*/, char* argv[] /*arg values*/) {
+
+	printf("%i",  FMath::Sum<int  >(1    , 2    ));
+	printf("\n");
+	printf("%f",  FMath::Sum<float>(1.4  , 2.1  ));
+	return 0;
+};
+```
+
+#### Static-link library
+
+**Wikipedia** : "A static library or statically-linked library is a set of routines, external functions and variables which are resolved in a caller at compile-time and copied into a target application by a compiler, linker, or binder, producing an object file and a stand-alone executable."
+
+#### Dynamic-link library
+
+**Wikipedia** : 
+
 * Static
 * Dynamic
 * Advantages of one over the other
