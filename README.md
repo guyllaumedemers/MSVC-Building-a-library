@@ -20,8 +20,8 @@ Be aware that some of the tooling used in the making of this `Demo` project won'
 
 A library is called header-only if the full definitions of all macros, functions and classes comprising the library are visible to the compiler in a header file form. Header-only libraries do not need to be separately compiled, packaged and installed in order to be used.
 
-##### Example
-Run using Terminal CLI and compile your executable with a Header-only library (*output : Main.obj, Main.exe*).
+##### Example - MSVC Development Toolkit Cmd-line
+
 ```
 C:> cl Main.cpp		(Main.obj, Main.exe)
 ```
