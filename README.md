@@ -13,11 +13,10 @@ Be aware that some of the tooling used in the making of this `Demo` project won'
 ### What's a library
 
 **Wikipedia** : "A library is a collection of implementations of behavior, written in terms of a language, that has a well-defined interface by which the behavior is invoked. For instance, people who want to write a higher-level program can use a library to make system calls instead of implementing those system calls."
-</br>
 
-**Run using Terminal CLI** and compile your executable with a Header ONLY library.
+**Run using Terminal CLI** and compile your executable with a Header ONLY library (*output : Main.obj, Main.exe*).
 </br></br>
-> cl Main.cc (output : Main.obj, Main.exe)
+> cl Main.cc
 </br>
 
 ```
