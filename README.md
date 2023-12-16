@@ -14,6 +14,8 @@ Be aware that some of the tooling used in the making of this `Demo` project won'
 
 **Wikipedia** : "A library is a collection of implementations of behavior, written in terms of a language, that has a well-defined interface by which the behavior is invoked. For instance, people who want to write a higher-level program can use a library to make system calls instead of implementing those system calls."
 
+## Types of libraries
+
 #### Header-only Library
 
 A library is called header-only if the full definitions of all macros, functions and classes comprising the library are visible to the compiler in a header file form. Header-only libraries do not need to be separately compiled, packaged and installed in order to be used.
