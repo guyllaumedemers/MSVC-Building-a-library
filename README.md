@@ -54,7 +54,7 @@ int main(int argc /*arg count*/, char* argv[] /*arg values*/) {
 };
 ```
 
-#### Static-link library
+#### Static library
 
 A static library or statically-linked library is a set of routines, external functions and variables which are resolved in a caller at compile-time and copied into a target application by a compiler, linker, or binder, producing an object file and a stand-alone executable.
 
@@ -86,7 +86,17 @@ int main(int argc /*arg count*/, char* argv[] /*arg values*/) {
 };
 ```
 
-#### Dynamic-link library
+#### Shared library
+
+A shared library or shared object is a file that is intended to be shared by executable files and further shared object files. Modules used by a program are loaded from individual shared objects into memory at load time or runtime, rather than being copied by a linker when it creates a single monolithic executable file for the program.
+
+##### Example
+```
+C:> cl /c GetGreetings.cc			(GetGreetings.obj)
+C:> lib GetGreetings.obj			(GetGreetings.lib)
+C:> link GetGreetings.obj /DLL /NOENTRY		(GetGreetings.dll)
+C:> cl Main.cc /link GetGreetings.lib		(Main.obj, Main.exe)
+```
 
 **Wikipedia** : 
 
