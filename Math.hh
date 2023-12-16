@@ -24,7 +24,7 @@ class FMath {
 public:
 	template<typename T,
 		std::enable_if_t<std::is_arithmetic<T>::value, bool> = true>
-	inline static T Sum(const T& A, const T& B) {
+	inline static T Sum(const T A, const T B) {
 		return A + B;
 	}
 };
