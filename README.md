@@ -23,7 +23,7 @@ A library is called header-only if the full definitions of all macros, functions
 ##### Example - MSVC Development Toolkit Cmd-line
 
 ```
-C:> cl Main.cpp		(Main.obj, Main.exe)
+C:> cl Main.cc		(Main.obj, Main.exe)
 ```
 
 ```
@@ -59,10 +59,32 @@ int main(int argc /*arg count*/, char* argv[] /*arg values*/) {
 A static library or statically-linked library is a set of routines, external functions and variables which are resolved in a caller at compile-time and copied into a target application by a compiler, linker, or binder, producing an object file and a stand-alone executable.
 
 ##### Example
-Run using Terminal CLI and compile your executable with a Header-only library (*output : Main.obj, Main.exe*).
-</br></br>
-> ??
-</br>
+```
+C:> cl /c HelloWorld.cc			(HelloWorld.obj)
+C:> lib HelloWorld.obj			(HelloWorld.lib)
+C:> cl Main.cc /link HelloWorld.lib	(Main.obj, Main.exe)
+```
+
+```
+// static library
+
+extern "C" const char* __cdecl Print() {
+	return "Hello World!";
+}
+
+// executable
+
+#include <stdio.h>
+
+// forward declaration
+extern "C" const char* __cdecl Print();
+
+int main(int argc /*arg count*/, char* argv[] /*arg values*/) {
+
+	puts(Print());
+	return 0;
+};
+```
 
 #### Dynamic-link library
 
