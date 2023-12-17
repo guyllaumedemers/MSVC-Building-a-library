@@ -16,7 +16,7 @@ Be aware that some of the tooling used in the making of this `Demo` project won'
 
 ## Types of libraries
 
-#### Header-only Library
+### Header-only Library
 
 A library is called header-only if the full definitions of all macros, functions and classes comprising the library are visible to the compiler in a header file form. Header-only libraries do not need to be separately compiled, packaged and installed in order to be used.
 
@@ -52,11 +52,11 @@ int main(int argc /*arg count*/, char* argv[] /*arg values*/) {
 };
 ```
 
-#### Static library
+### Static library
 
 A static library or statically-linked library is a set of routines, external functions and variables which are resolved in a caller at compile-time and copied into a target application by a compiler, linker, or binder, producing an object file and a stand-alone executable.
 
-##### Example
+##### Example - MSVC Development Toolkit Cmd-line
 ```
 C:> cl /c HelloWorld.cc			(HelloWorld.obj)
 C:> lib HelloWorld.obj			(HelloWorld.lib)
@@ -84,11 +84,15 @@ int main(int argc /*arg count*/, char* argv[] /*arg values*/) {
 };
 ```
 
-#### Shared library
+### Shared library
 
 A shared library or shared object is a file that is intended to be shared by executable files and further shared object files. Modules used by a program are loaded from individual shared objects into memory at load time or runtime, rather than being copied by a linker when it creates a single monolithic executable file for the program.
 
-##### Example
+**Load-time dynamic linking**
+
+In load-time dynamic linking, an application makes explicit calls to exported DLL functions like local functions. To use load-time dynamic linking, provide a header (.h) file and an import library (.lib) file when you compile and link the application. When you do this, the linker will provide the system with the information that is required to load the DLL and resolve the exported DLL function locations at load time.
+
+##### Example A - MSVC Development Toolkit Cmd-line
 ```
 C:> cl /c GetGreetings.cc			(GetGreetings.obj)
 C:> lib GetGreetings.obj			(GetGreetings.lib)
@@ -96,28 +100,27 @@ C:> link GetGreetings.obj /DLL /NOENTRY		(GetGreetings.dll)
 C:> cl Main.cc /link GetGreetings.lib		(Main.obj, Main.exe)
 ```
 
-**Wikipedia** : 
-
-* Static
-* Dynamic
-* Advantages of one over the other
-* Implication at the executable level
-* How to build one
-* the Implications with the Linker
-* HOw your OS query dynamic libraries
-
-#### A Simple HelloWorld.cc
 ```
-// some example code
+// shared library
+
+
+// executable
 ```
 
-##### SYMBOLS
-**__cdecl** 
+**Run-time dynamic linking**
 
-##### DUMPBIN
+In run-time dynamic linking, an application calls either the LoadLibrary function or the LoadLibraryEx function to load the DLL at run time. After the DLL is successfully loaded, you use the GetProcAddress function to obtain the address of the exported DLL function that you want to call. When you use run-time dynamic linking, you do not need an import library file.
 
-* https://learn.microsoft.com/en-us/cpp/cpp/extern-cpp?view=msvc-170
-* https://learn.microsoft.com/en-us/cpp/cpp/cdecl?view=msvc-170
-* https://learn.microsoft.com/en-us/windows/win32/dlls/dynamic-link-libraries
-* https://learn.microsoft.com/en-us/cpp/build/dlls-in-visual-cpp?view=msvc-170
-* dll with entry point vs no entry point
+##### Example B - MSVC Development Toolkit Cmd-line
+```
+C:> cl /c GetGreetings.cc			(GetGreetings.obj)
+C:> link GetGreetings.obj /DLL /NOENTRY		(GetGreetings.dll)
+C:> cl Main.cc					(Main.obj, Main.exe)
+```
+
+```
+// shared library
+
+// executable
+```
+Tips : Further details are provided regarding window's specific usage of dll's at the following [link](https://learn.microsoft.com/en-us/troubleshoot/windows-client/deployment/dynamic-link-library).
