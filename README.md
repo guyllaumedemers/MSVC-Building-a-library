@@ -48,8 +48,6 @@ public:
 int main(int argc /*arg count*/, char* argv[] /*arg values*/) {
 
 	printf("%i",  FMath::Sum<int  >(1    , 2    ));
-	printf("\n");
-	printf("%f",  FMath::Sum<float>(1.4  , 2.1  ));
 	return 0;
 };
 ```
