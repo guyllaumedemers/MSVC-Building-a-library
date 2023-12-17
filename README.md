@@ -95,16 +95,29 @@ In load-time dynamic linking, an application makes explicit calls to exported DL
 ##### Example A - MSVC Development Toolkit Cmd-line
 ```
 C:> cl /c GetGreetings.cc			(GetGreetings.obj)
-C:> lib GetGreetings.obj			(GetGreetings.lib)
 C:> link GetGreetings.obj /DLL /NOENTRY		(GetGreetings.dll)
 C:> cl Main.cc /link GetGreetings.lib		(Main.obj, Main.exe)
 ```
+*Tips : Now that the executable has been compiled and linked with the .lib file, the executable will access the dll exported functions when invoked. You can safely delete the .obj file and .lib file and run the executable.* 
 
 ```
 // shared library
 
+__declspec(dllexport) const char* __cdecl GetGreatings() {
+	return "Greatings Programmer!";
+}
 
 // executable
+
+#include <stdio.h>
+
+__declspec(dllimport) const char* __cdecl GetGreatings();
+
+int main(int argc /*arg count*/, char* argv[] /*arg values*/) {
+
+	puts(GetGreatings());
+	return 0;
+};
 ```
 
 **Run-time dynamic linking**
