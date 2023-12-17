@@ -16,7 +16,7 @@ Be aware that some of the tooling used in the making of this `Demo` project won'
 
 ## Types of libraries
 
-### Header-only Library
+### Header-only library
 
 A library is called header-only if the full definitions of all macros, functions and classes comprising the library are visible to the compiler in a header file form. Header-only libraries do not need to be separately compiled, packaged and installed in order to be used.
 
