@@ -142,7 +142,6 @@ C:> cl /c GetGreetings.cc					(GetGreetings.obj)
 C:> link GetGreetings.obj /DLL /NOENTRY	/EXPORT:GetGreetings	(GetGreetings.lib, GetGreetings.exp, GetGreetings.dll)
 C:> cl Main.cc							(Main.obj, Main.exe)
 ```
-*Tips : Now that the executable has been compiled and linked with the import library (.lib), the executable will access the dll exported functions when invoked. You can safely delete the .obj file and .lib file and run the executable.* 
 
 ```
 // shared library
