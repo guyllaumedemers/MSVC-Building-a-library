@@ -114,7 +114,7 @@ C:> cl Main.cc /link GetGreetings.lib		(Main.obj, Main.exe)
 ```
 // shared library
 
-__declspec(dllexport) const char* __cdecl GetGreatings() {
+__declspec(dllexport) const char* __cdecl GetGreetings() {
 	return "Greatings Programmer!";
 }
 
@@ -122,11 +122,11 @@ __declspec(dllexport) const char* __cdecl GetGreatings() {
 
 #include <stdio.h>
 
-__declspec(dllimport) const char* __cdecl GetGreatings();
+__declspec(dllimport) const char* __cdecl GetGreetings();
 
 int main(int argc /*arg count*/, char* argv[] /*arg values*/) {
 
-	puts(GetGreatings());
+	puts(GetGreetings());
 	return 0;
 };
 ```
@@ -138,14 +138,32 @@ In run-time dynamic linking, an application calls either the LoadLibrary functio
 ##### Example B - MSVC Development Toolkit Cmd-line
 
 ```
-C:> cl /c GetGreetings.cc			(GetGreetings.obj)
-C:> link GetGreetings.obj /DLL /NOENTRY		(GetGreetings.dll)
-C:> cl Main.cc					(Main.obj, Main.exe)
+C:> cl /c GetGreetings.cc					(GetGreetings.obj)
+C:> link GetGreetings.obj /DLL /NOENTRY	/EXPORT:GetGreetings	(GetGreetings.dll)
+C:> cl Main.cc							(Main.obj, Main.exe)
 ```
 
 ```
 // shared library
 
+extern "C" const char* __cdecl GetGreetings() {
+	return "Greatings Programmer!";
+}
+
 // executable
+
+#include <stdio.h>
+#include <Windows.h>
+
+int main(int argc /*arg count*/, char* argv[] /*arg values*/) {
+
+	const HMODULE ModuleHandle = LoadLibraryExW(L"GetGreetings.dll", nullptr, 0);
+	using GetGreetingType = const char* (__cdecl*)();
+	const GetGreetingType GetGreetings = reinterpret_cast<GetGreetingType>(GetProcAddress(ModuleHandle, "GetGreetings"));
+
+	puts(GetGreetings());
+	FreeLibrary(ModuleHandle);
+	return 0;
+};
 ```
-Tips : Further details are provided regarding window's specific usage of dll's at the following [link](https://learn.microsoft.com/en-us/troubleshoot/windows-client/deployment/dynamic-link-library).
+Tips : Further details are provided regarding window's specific usage of dll's at the following [link](https://learn.microsoft.com/en-us/troubleshoot/windows-client/deployment/dynamic-link-library). Additional information about Dll can be found on [cppcon](https://www.youtube.com/watch?v=JPQWQfDhICA&t=579s&ab_channel=CppCon) channel.

@@ -20,10 +20,10 @@
 
 #include <stdio.h>
 
-__declspec(dllimport) const char* __cdecl GetGreatings();
+__declspec(dllimport) const char* __cdecl GetGreetings();
 
 int main(int argc /*arg count*/, char* argv[] /*arg values*/) {
 
-	puts(GetGreatings());
+	puts(GetGreetings());
 	return 0;
 };

@@ -17,3 +17,20 @@
 //LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
+
+/**
+ *	example of a module definition file (.def)
+ *
+ *	GetGreetings.def
+ *
+ *	LIBRARY "GetGreetings"
+ *	EXPORTS GetGreetings
+ *
+ *	or
+ *
+ *	use __declspec(export)
+ */
+
+__declspec(dllexport) const char* __cdecl GetGreetings() {
+	return "Greetings Programmer!";
+}

@@ -18,19 +18,6 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-/**
- *	example of a module definition file (.def)
- *
- *	GetGreatings.def
- *
- *	LIBRARY "GetGreatings"
- *	EXPORTS GetGreatings
- *
- *	or
- *
- *	use __declspec(export)
- */
-
-__declspec(dllexport) const char* __cdecl GetGreatings() {
-	return "Greatings Programmer!";
+extern "C" const char* __cdecl GetGreetings() {
+	return "Greetings Programmer!";
 }

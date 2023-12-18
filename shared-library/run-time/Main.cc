@@ -18,7 +18,16 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
+#include <stdio.h>
+#include <Windows.h>
+
 int main(int argc /*arg count*/, char* argv[] /*arg values*/) {
 
+	const HMODULE ModuleHandle = LoadLibraryExW(L"GetGreetings.dll", nullptr, 0);
+	using GetGreetingType = const char* (__cdecl*)();
+	const GetGreetingType GetGreetings = reinterpret_cast<GetGreetingType>(GetProcAddress(ModuleHandle, "GetGreetings"));
+
+	puts(GetGreetings());
+	FreeLibrary(ModuleHandle);
 	return 0;
 };
