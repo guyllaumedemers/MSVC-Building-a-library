@@ -71,6 +71,7 @@ C:> cl /c HelloWorld.cc				(HelloWorld.obj)
 C:> lib HelloWorld.obj				(HelloWorld.lib)
 C:> cl Main.cc /link HelloWorld.lib		(Main.obj, Main.exe)
 ```
+*Tips : Now that the executable has been compiled and linked with the static library (.lib), the executable can invoke functions defined in the static library without the .lib existing as its now compiled into the executable. You can safely delete the .obj file and .lib file and run the executable.*
 
 ```
 // static library
