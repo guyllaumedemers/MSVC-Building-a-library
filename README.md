@@ -106,7 +106,7 @@ In load-time dynamic linking, an application makes explicit calls to exported DL
 
 ```
 C:> cl /c GetGreetings.cc			(GetGreetings.obj)
-C:> link GetGreetings.obj /DLL /NOENTRY		(GetGreetings.dll)
+C:> link GetGreetings.obj /DLL /NOENTRY		(GetGreetings.lib, GetGreetings.exp, GetGreetings.dll)
 C:> cl Main.cc /link GetGreetings.lib		(Main.obj, Main.exe)
 ```
 *Tips : Now that the executable has been compiled and linked with the import library (.lib), the executable will access the dll exported functions when invoked. You can safely delete the .obj file and .lib file and run the executable.* 
@@ -139,10 +139,10 @@ In run-time dynamic linking, an application calls either the LoadLibrary functio
 
 ```
 C:> cl /c GetGreetings.cc					(GetGreetings.obj)
-C:> link GetGreetings.obj /DLL /NOENTRY	/EXPORT:GetGreetings	(GetGreetings.dll)
+C:> link GetGreetings.obj /DLL /NOENTRY	/EXPORT:GetGreetings	(GetGreetings.lib, GetGreetings.exp, GetGreetings.dll)
 C:> cl Main.cc							(Main.obj, Main.exe)
 ```
-
+*[Tips](https://stackoverflow.com/questions/2727020/what-is-the-use-of-exp-and-what-is-the-difference-between-lib-and-dll) : The DLL won't link until the executable is built to provide a .lib file -- but the executable won't link until the DLL is built to provide a .lib file. To break the dependency, you run the linker against the executable, which fails (because it can't find a .lib file for the DLL), but will produce a .exp file. You then link the DLL against the .exp file for the executable. You can then re-run link to produce the executable, using the .lib file for the DLL.*
 ```
 // shared library
 
