@@ -10,9 +10,7 @@ Example details are grouped into subject related points and showcase investigati
 #### What this README.md is not
 Be aware that some of the tooling used in the making of this `Demo` project won't be covered here. External documentations will be provided for your own benefit, which in most case, are also where most of the information mentioned here will be coming from.
 
-### Quick guide to CLI (Command-line Interface)
-
-A set of few commands that a re required to execute the examples provided under **'this'** README.md
+## Quick guide to CLI (Command-line Interface)
 
 * [cl](https://learn.microsoft.com/en-us/cpp/build/reference/compiler-options?view=msvc-170) : The compilers produce Common Object File Format (COFF) object (.obj) files. The linker produces executable (.exe) files or dynamic-link libraries (DLLs). To compile without linking, use the [/c](https://learn.microsoft.com/en-us/cpp/build/reference/cl-invokes-the-linker?view=msvc-170) option.
 * [lib](https://learn.microsoft.com/en-us/cpp/build/reference/lib-reference?view=msvc-170) : The Microsoft Library Manager (LIB.exe) creates and manages a library of Common Object File Format (COFF) object files. LIB can also be used to create export files and import libraries to reference exported definitions.
