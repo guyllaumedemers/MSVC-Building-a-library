@@ -10,11 +10,21 @@ Example details are grouped into subject related points and showcase investigati
 #### What this README.md is not
 Be aware that some of the tooling used in the making of this `Demo` project won't be covered here. External documentations will be provided for your own benefit, which in most case, are also where most of the information mentioned here will be coming from.
 
-### What's a library
+### Quick guide to CLI (Command-line Interface)
+
+A set of few commands that a re required to execute the examples provided under **'this'** README.md
+
+* [cl](https://learn.microsoft.com/en-us/cpp/build/reference/compiler-options?view=msvc-170) : The compilers produce Common Object File Format (COFF) object (.obj) files. The linker produces executable (.exe) files or dynamic-link libraries (DLLs). To compile without linking, use the [/c](https://learn.microsoft.com/en-us/cpp/build/reference/cl-invokes-the-linker?view=msvc-170) option.
+* [lib](https://learn.microsoft.com/en-us/cpp/build/reference/lib-reference?view=msvc-170) : The Microsoft Library Manager (LIB.exe) creates and manages a library of Common Object File Format (COFF) object files. LIB can also be used to create export files and import libraries to reference exported definitions.
+* [link](https://learn.microsoft.com/en-us/cpp/build/reference/linker-options?view=msvc-170) : LINK.exe links Common Object File Format (COFF) object files and libraries to create an executable (EXE) file or a dynamic-link library (DLL).
+* [dumpbin](https://learn.microsoft.com/en-us/cpp/build/reference/dumpbin-reference?view=msvc-170) : The Microsoft COFF Binary File Dumper (DUMPBIN.EXE) displays information about Common Object File Format (COFF) binary files. You can use DUMPBIN to examine COFF object files, standard libraries of COFF objects, executable files, and dynamic-link libraries (DLLs).
+
+
+## What's a library
 
 **Wikipedia** : "A library is a collection of implementations of behavior, written in terms of a language, that has a well-defined interface by which the behavior is invoked. For instance, people who want to write a higher-level program can use a library to make system calls instead of implementing those system calls."
 
-## Types of libraries
+# Types of libraries
 
 ### Header-only library
 
@@ -57,10 +67,11 @@ int main(int argc /*arg count*/, char* argv[] /*arg values*/) {
 A static library or statically-linked library is a set of routines, external functions and variables which are resolved in a caller at compile-time and copied into a target application by a compiler, linker, or binder, producing an object file and a stand-alone executable.
 
 ##### Example - MSVC Development Toolkit Cmd-line
+
 ```
-C:> cl /c HelloWorld.cc			(HelloWorld.obj)
-C:> lib HelloWorld.obj			(HelloWorld.lib)
-C:> cl Main.cc /link HelloWorld.lib	(Main.obj, Main.exe)
+C:> cl /c HelloWorld.cc				(HelloWorld.obj)
+C:> lib HelloWorld.obj				(HelloWorld.lib)
+C:> cl Main.cc /link HelloWorld.lib		(Main.obj, Main.exe)
 ```
 
 ```
@@ -93,12 +104,13 @@ A shared library or shared object is a file that is intended to be shared by exe
 In load-time dynamic linking, an application makes explicit calls to exported DLL functions like local functions. To use load-time dynamic linking, provide a header (.h) file and an import library (.lib) file when you compile and link the application. When you do this, the linker will provide the system with the information that is required to load the DLL and resolve the exported DLL function locations at load time.
 
 ##### Example A - MSVC Development Toolkit Cmd-line
+
 ```
 C:> cl /c GetGreetings.cc			(GetGreetings.obj)
 C:> link GetGreetings.obj /DLL /NOENTRY		(GetGreetings.dll)
 C:> cl Main.cc /link GetGreetings.lib		(Main.obj, Main.exe)
 ```
-*Tips : Now that the executable has been compiled and linked with the .lib file, the executable will access the dll exported functions when invoked. You can safely delete the .obj file and .lib file and run the executable.* 
+*Tips : Now that the executable has been compiled and linked with the import library (.lib), the executable will access the dll exported functions when invoked. You can safely delete the .obj file and .lib file and run the executable.* 
 
 ```
 // shared library
@@ -125,6 +137,7 @@ int main(int argc /*arg count*/, char* argv[] /*arg values*/) {
 In run-time dynamic linking, an application calls either the LoadLibrary function or the LoadLibraryEx function to load the DLL at run time. After the DLL is successfully loaded, you use the GetProcAddress function to obtain the address of the exported DLL function that you want to call. When you use run-time dynamic linking, you do not need an import library file.
 
 ##### Example B - MSVC Development Toolkit Cmd-line
+
 ```
 C:> cl /c GetGreetings.cc			(GetGreetings.obj)
 C:> link GetGreetings.obj /DLL /NOENTRY		(GetGreetings.dll)
