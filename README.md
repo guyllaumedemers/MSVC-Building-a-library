@@ -22,7 +22,7 @@ Be aware that some of the tooling used in the making of this `Demo` project won'
 
 **Wikipedia** : "A library is a collection of implementations of behavior, written in terms of a language, that has a well-defined interface by which the behavior is invoked. For instance, people who want to write a higher-level program can use a library to make system calls instead of implementing those system calls."
 
-#### Calling Conventions and Symbols explained
+#### Calling Conventions and Symbols
 
 **Wikipedia** : "A calling convention is an implementation-level (low-level) scheme for how subroutines or functions receive parameters from their caller and how they return a result. When some code calls a function, design choices have been taken for where and how parameters are passed to that function, and where and how results are returned from that function, with these transfers typically done via certain registers or within a stack frame on the call stack."
 
