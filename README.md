@@ -22,6 +22,14 @@ Be aware that some of the tooling used in the making of this `Demo` project won'
 
 **Wikipedia** : "A library is a collection of implementations of behavior, written in terms of a language, that has a well-defined interface by which the behavior is invoked. For instance, people who want to write a higher-level program can use a library to make system calls instead of implementing those system calls."
 
+#### Calling Conventions and Symbols explained
+
+**Wikipedia** : "A calling convention is an implementation-level (low-level) scheme for how subroutines or functions receive parameters from their caller and how they return a result. When some code calls a function, design choices have been taken for where and how parameters are passed to that function, and where and how results are returned from that function, with these transfers typically done via certain registers or within a stack frame on the call stack."
+
+* [__cdecl](https://learn.microsoft.com/en-us/cpp/cpp/cdecl?view=msvc-170) : Is the default calling convention for C and C++ programs. Because the stack is cleaned up by the caller, it can do vararg functions. The __cdecl calling convention creates larger executables than __stdcall, because it requires each function call to include stack cleanup code. 
+* [extern "C"](https://learn.microsoft.com/en-us/cpp/cpp/extern-cpp?view=msvc-170#extern-c-and-extern-c-function-declarations) : Makes a function-name in C++ have C linkage (compiler does not [mangle](https://www.geeksforgeeks.org/extern-c-in-c/) the name) so that client C code can link to (use) your function using a C compatible header file that contains just the declaration of your function.
+* [__declspec](https://learn.microsoft.com/en-us/cpp/build/exporting-from-a-dll-using-declspec-dllexport?view=msvc-170) : Adds the export directive to the object file so you do not need to use a .def file.
+
 # Types of libraries
 
 ### Header-only library
